@@ -14,14 +14,7 @@ class TrainingModelViewSet(ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = TrainingValidateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        title = serializer.validated_data.get('title')
-        description = serializer.validated_data.get('description')
-        duration = serializer.validated_data.get('duration')
-        category_id = serializer.validated_data.get('category_id')
-        video = serializer.validated_data.get('video')
-        training = Training.objects.create(
-            title=title, description=description, duration=duration, category_id=category_id, video=video
-        )
+        training = Training.objects.create(**serializer.validated_data)
         training.save()
         return Response(data=TrainingSerializer(training).data,
                         status=status.HTTP_201_CREATED)

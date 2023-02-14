@@ -17,7 +17,7 @@ class TrainingSerializer(serializers.ModelSerializer):
     reviews = ReviewSerializer(many=True)
     class Meta:
         model = Training
-        fields = 'title duration category video reviews'.split()
+        fields = 'title duration category reviews'.split()
 
 class TrainingValidateSerializer(serializers.Serializer):
     title = serializers.CharField()

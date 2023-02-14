@@ -12,8 +12,8 @@ class Training(models.Model):
     description = models.TextField(null=True, blank=True)
     duration = models.CharField(max_length=50)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories', null=True)
-    video = models.FileField(upload_to='media/%y', null=True,
-                             validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
+    # video = models.FileField(upload_to='media/%y', null=True,
+    #                          validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
 
     def __str__(self):
         return self.title
